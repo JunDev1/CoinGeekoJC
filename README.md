@@ -1,6 +1,10 @@
 Push # 1 При первичной инициализации были добавлены библиотеки retforit и Kotlinx Serialization  
 
 Push # 2 Создание пользовательского интерфейса без логической связи
+
+1. Код
+    > dasdad
+2. 
 ```
 @Composable
 fun ListCryptoScreen() {
