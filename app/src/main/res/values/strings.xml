@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CoinGeekoJC</string>
+    <string name="title_list_crypto">Список криптовалют</string>
+    <string name="usd">USD</string>
+    <string name="rub">RUB</string>
+    <string name="try_again">ПОПРОБОВАТЬ</string>
+    <string name="something_wrong">Произошла какая-то ошибка :( \n Попробуем снова?</string>
+    <string name="name_currency">Bitcoin</string>
+    <string name="abbreviation_currency">BTC</string>
+    <string name="description_currency">Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto. It was launched soon after, in January 2009. \n \n
+
+Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.” \n
+Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.”</string>
+    <string name="description_currency_title">Описание</string>
+    <string name="categoty_currency_title">Категории</string>
+    <string name="categoty_currency_description">Smart Contract Platform, Ethereum Ecosystems</string>
 </resources>
