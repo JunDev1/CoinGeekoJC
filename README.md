@@ -1,7 +1,8 @@
 Push # 1 При первичной инициализации были добавлены библиотеки retforit и Kotlinx Serialization  
 
 Push # 2 Создание пользовательского интерфейса без логической связи
-    <@Composable
+```
+@Composable
 fun LoadingScreen() {
     Scaffold(
         topBar = {
@@ -33,7 +34,7 @@ fun LoadingScreen() {
         }
     }
 }
->
+```
 
 ![image](https://github.com/user-attachments/assets/f38c3e72-409f-468f-af34-874d4084ccfb)
 
