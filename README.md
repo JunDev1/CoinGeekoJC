@@ -3,6 +3,78 @@ Push # 1 При первичной инициализации были доба�
 Push # 2 Создание пользовательского интерфейса без логической связи
 ```
 @Composable
+fun ListCryptoScreen() {
+    var selectedCurrency by remember { mutableStateOf("USD") }
+    Scaffold(
+        topBar = {
+            Surface(
+                shadowElevation = 4.dp
+            ) {
+                Column {
+                    TopAppBar(
+                        modifier = Modifier.fillMaxWidth(1f),
+                        title = {
+                            Text(text = stringResource(R.string.title_list_crypto))
+                        }
+                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val color = when (selectedCurrency) {
+                            "USD" -> InputChipDefaults.inputChipColors(
+                                selectedContainerColor = Color(
+                                    0xFFFFA500
+                                )
+                            )
+
+                            "RUB" -> InputChipDefaults.inputChipColors(
+                                selectedContainerColor = Color(
+                                    0xFFFFA500
+                                )
+                            )
+
+                            else -> {
+                                InputChipDefaults.inputChipColors(
+                                    disabledContainerColor = Color(
+                                        0xFFE0E0E0
+                                    )
+                                )
+                            }
+                        }
+                        InputChip1(
+                            modifier = Modifier.padding(start = 16.dp),
+                            selected = selectedCurrency == "USD",
+                            onClick = { selectedCurrency = "USD" },
+                            label = { Text(text = stringResource(R.string.usd)) },
+                            colors = color
+
+                        )
+                        InputChip1(
+                            selected = selectedCurrency == "RUB",
+                            onClick = { selectedCurrency = "RUB" },
+                            label = { Text(text = stringResource(R.string.rub)) },
+                            colors = color
+                        )
+                    }
+                }
+            }
+        }
+
+    ) { paddingValues ->
+        LazyColumn(contentPadding = paddingValues) {
+            items(20) {
+                CardInfo()
+            }
+        }
+
+    }
+}
+```
+```
+@Composable
 fun LoadingScreen() {
     Scaffold(
         topBar = {
