@@ -54,7 +54,9 @@ android {
 dependencies {
     implementation (libs.retrofit)
     implementation (libs.converter.kotlinx.serialization)
-
+    implementation(libs.coil)
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.okhttp)

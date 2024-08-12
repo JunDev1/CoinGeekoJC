@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -51,7 +50,7 @@ fun LoadingScreen() {
                 .padding(paddingValues)
         ) {
             CircularProgressIndicator(
-                color = Color(0xFFFFA500) // Цвет индикатора (оранжевый)
+                color = Color(0xFFFFA500)
             )
         }
     }

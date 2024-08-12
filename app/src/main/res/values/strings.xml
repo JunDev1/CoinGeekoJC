@@ -14,4 +14,6 @@ Bitcoin is a peer-to-peer online currency, meaning that all transactions happen 
     <string name="description_currency_title">Описание</string>
     <string name="categoty_currency_title">Категории</string>
     <string name="categoty_currency_description">Smart Contract Platform, Ethereum Ecosystems</string>
+    <string name="currency_price">$ 28,560.40</string>
+    <string name="currency_percent">+ 4.05%</string>
 </resources>
