@@ -1,24 +1,40 @@
 package com.example.coingeekojc
 
-import android.util.Log
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coingeekojc.ui.theme.POJO.CurrencyItem
 import com.example.coingeekojc.ui.theme.retrofit.ApiFactory
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
+
     private val _currencyList = mutableStateOf<List<CurrencyItem>>(mutableListOf())
     val currencyList: State<List<CurrencyItem>> = _currencyList
-    private var originalCurrencyList: List<CurrencyItem> = emptyList() // Сохраняем исходные значения
+
+    private var originalCurrencyList: List<CurrencyItem> =
+        emptyList() // Сохраняем исходные значения
     private var currentCurrency: String = "USD" // Текущая валюта
+
+    var uiState by mutableStateOf<UiState>(UiState.Loading)
+        private set
+
+    /*
+    Данный блок отвечается за инициализацию viewModel в MainActivityViewModel,
+    чтобы при запуске приложения началась подгрузка данных из API в фоновом потоке
+     */
     init {
         viewModelScope.launch {
             loadInitialData()
         }
     }
+    /*
+        Ковертация валюты в рубли и доллары
+     */
     fun convertCurrency(toCurrency: String) {
         if (toCurrency == currentCurrency) return // Если валюта уже выбрана, ничего не делаем
         if (originalCurrencyList.isEmpty()) {
@@ -33,23 +49,29 @@ class MainActivityViewModel : ViewModel() {
                 currencyItem.copy(currentPrice = currencyItem.currentPrice) // Возвращаем исходные значения для USD
             }
         }
-
         currentCurrency = toCurrency // Обновляем текущую валюту
     }
 
+    /*
+        Инициализация данных при запуске приложения
+     */
     private suspend fun loadInitialData() {
-        try {
-            val result = ApiFactory.apiService.getCoinList()
-            if (result.isEmpty()) {
-                Log.d("MainActivityViewModel", "Список пуст")
-            } else {
-                _currencyList.value = result
-                Log.d("MainActivityViewModel", "Список обновлен: ${_currencyList.value.size} элементов")
-            }
+        UiState.Loading
+        delay(5000L)
+        uiState = try {
+            val listCurrencyItem = ApiFactory.apiService.getCoinList()
+            _currencyList.value = listCurrencyItem
+            originalCurrencyList = listCurrencyItem
+            UiState.Success(listCurrencyItem = listCurrencyItem)
         } catch (e: Exception) {
-            Log.e("MainActivityViewModel", e.message.toString())
+            UiState.Error
         }
     }
 
-
+    fun retry() {
+        uiState = UiState.Loading
+        viewModelScope.launch {
+            loadInitialData()
+        }
+    }
 }

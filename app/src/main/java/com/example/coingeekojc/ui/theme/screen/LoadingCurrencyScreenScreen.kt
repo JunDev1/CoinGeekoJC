@@ -19,19 +19,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coingeekojc.MainActivityViewModel
 import com.example.coingeekojc.R
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Preview
 @Composable
-fun LoadingScreen() {
+fun LoadingCurrencyScreenScreen() {
     Scaffold(
         topBar = {
             Surface(
                 shadowElevation = 4.dp
             ) {
                 TopAppBar(
-                    title = { Text(text = stringResource(R.string.title_list_crypto)) },
+                    title = { Text(text = stringResource(R.string.name_currency)) },
                     navigationIcon = {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,

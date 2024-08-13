@@ -31,19 +31,18 @@ import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.coingeekojc.MainActivityViewModel
 import com.example.coingeekojc.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ErrorScreen(viewModel: MainActivityViewModel) {
+fun ErrorCurrencyScreen() {
     Scaffold(
         topBar = {
             Surface(
                 shadowElevation = 4.dp
             ) {
                 TopAppBar(
-                    title = { Text(text = stringResource(R.string.title_list_crypto)) },
+                    title = { Text(text = stringResource(R.string.name_currency)) },
                     navigationIcon = {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
@@ -79,7 +78,7 @@ fun ErrorScreen(viewModel: MainActivityViewModel) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
-                        viewModel.retry()
+                        //todo
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA500))
                 ) {

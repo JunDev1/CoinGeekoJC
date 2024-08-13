@@ -10,6 +10,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,7 +32,10 @@ import com.example.coingeekojc.utils.PercentageChangeText
 import com.example.coingeekojc.utils.formatPrice
 
 @Composable
-fun CardInfo(currencyItem: CurrencyItem, currencySymbol: String) {
+fun CardInfo(
+    currencyItem : CurrencyItem,
+    currencySymbol: String
+) {
     Card(
         modifier = Modifier.padding(top = 4.dp)
     ) {

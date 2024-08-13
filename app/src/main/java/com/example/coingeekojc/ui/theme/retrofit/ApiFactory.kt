@@ -14,5 +14,7 @@ object ApiFactory {
         .baseUrl(BASE_URL)
         .addConverterFactory(networkJson.asConverterFactory(contentType))
         .build()
-    val apiService = retrofit.create(ApiService::class.java)
+    val apiService by lazy {
+        retrofit.create(ApiService::class.java)
+    }
 }

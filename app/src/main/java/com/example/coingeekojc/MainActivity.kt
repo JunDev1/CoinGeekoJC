@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CoinGeekoJCTheme {
-                CurrencyScreen(viewModel)
+                CurrencyScreen(viewModel.uiState,viewModel)
             }
         }
     }
