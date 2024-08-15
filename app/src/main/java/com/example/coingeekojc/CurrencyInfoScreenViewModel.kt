@@ -8,14 +8,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coingeekojc.ui.theme.POJO.CurrencyCategoryItem
-import com.example.coingeekojc.ui.theme.POJO.CurrencyItem
 import com.example.coingeekojc.ui.theme.retrofit.ApiFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CurrencyInfoScreenViewModel() : ViewModel() {
 
-    private val _currencyCategory = mutableStateOf<CurrencyCategoryItem>(CurrencyCategoryItem())
+    private val _currencyCategory = mutableStateOf(CurrencyCategoryItem())
     val currencyCategory: State<CurrencyCategoryItem> = _currencyCategory
 
     var coinGeckoUiState by mutableStateOf<CoinGeckoUiState>(CoinGeckoUiState.Loading)
@@ -35,22 +34,9 @@ class CurrencyInfoScreenViewModel() : ViewModel() {
         }
     }
 
-//    fun retry() {
-//        viewModelScope.launch {
-//            loadInitialDataCategories()
-//        }
-//    }
-
-//    suspend fun loadInitialDataCategories(coinId : String) {
-////        CoinGeckoUiState.Loading
-////        delay(5000L)
-//        coinGeckoUiState = try {
-//            val currencyCategoryData = ApiFactory.apiService.getCurrencyItemCategory(id = coinId)
-//            _currencyCategory.value = currencyCategoryData
-//            Log.d("loadInitialDataCategories", currencyCategoryData.toString())
-//            CoinGeckoUiState.CategoryCurrencyItem(categoryCurrencyItem = currencyCategoryData)
-//        } catch (e: Exception) {
-//            CoinGeckoUiState.Error
-//        }
-//    }
+    fun retry(coinId: String) {
+        viewModelScope.launch {
+            loadInitialDataCategories(coinId)
+        }
+    }
 }

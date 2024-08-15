@@ -12,8 +12,8 @@
 Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.” \n
 Bitcoin is a peer-to-peer online currency, meaning that all transactions happen directly between equal, independent network participants, without the need for any intermediary to permit or facilitate them. Bitcoin was created, according to Nakamoto’s own words, to allow “online payments to be sent directly from one party to another without going through a financial institution.”</string>
     <string name="description_currency_title">Описание</string>
-    <string name="categoty_currency_title">Категории</string>
-    <string name="categoty_currency_description">Smart Contract Platform, Ethereum Ecosystems</string>
+    <string name="category_currency_title">Категории</string>
+    <string name="category_currency_description">Smart Contract Platform, Ethereum Ecosystems</string>
     <string name="currency_price">$ 28,560.40</string>
     <string name="currency_percent">+ 4.05%</string>
 </resources>
