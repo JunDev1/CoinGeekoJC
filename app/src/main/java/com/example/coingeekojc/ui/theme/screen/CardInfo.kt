@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
@@ -34,10 +35,15 @@ import com.example.coingeekojc.utils.formatPrice
 @Composable
 fun CardInfo(
     currencyItem : CurrencyItem,
-    currencySymbol: String
-) {
+    currencySymbol: String,
+    navController: NavController
+    ) {
     Card(
-        modifier = Modifier.padding(top = 4.dp)
+        modifier = Modifier.padding(top = 4.dp),
+        onClick = {
+            val coinId = currencyItem.id
+            navController.navigate("CurrencyInfoScreen/$coinId")
+        }
     ) {
         Row(
             modifier = Modifier

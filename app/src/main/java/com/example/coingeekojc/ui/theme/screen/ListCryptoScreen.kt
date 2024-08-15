@@ -1,6 +1,5 @@
 package com.example.coingeekojc.ui.theme.screen
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,16 +24,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.coingeekojc.MainActivityViewModel
 import com.example.coingeekojc.R
-import com.example.coingeekojc.UiState
 import androidx.compose.material3.InputChip as InputChip1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListCryptoScreen(viewModel: MainActivityViewModel) {
+fun ListCryptoScreen(
+    navController: NavController,
+) {
     var selectedCurrency by remember { mutableStateOf("USD") }
     var currencySymbol by remember { mutableStateOf("$") }
+    val viewModel: MainActivityViewModel = viewModel()
     val currencyItems = viewModel.currencyList
 
     Scaffold(
@@ -61,11 +64,13 @@ fun ListCryptoScreen(viewModel: MainActivityViewModel) {
                                     0xFFFFA500
                                 )
                             )
+
                             "RUB" -> InputChipDefaults.inputChipColors(
                                 selectedContainerColor = Color(
                                     0xFFFFA500
                                 )
                             )
+
                             else -> {
                                 InputChipDefaults.inputChipColors(
                                     disabledContainerColor = Color(
@@ -105,22 +110,11 @@ fun ListCryptoScreen(viewModel: MainActivityViewModel) {
             modifier = Modifier.navigationBarsPadding(),
             contentPadding = paddingValues,
         ) {
-            items(currencyItems.value) { currencyItem ->
-                CardInfo(currencyItem ,currencySymbol)
+            items(
+                currencyItems.value,
+            ) { currencyItem ->
+                CardInfo(currencyItem, currencySymbol, navController = navController)
             }
         }
-    }
-}
-
-/*
-    Данная функция передается в MainActivity передается,
-    в которой при проверке coinGeckoUiState вызывался соответствующий экран
- */
-@Composable
-fun CurrencyScreen(coinGeckoUiState: UiState, viewModel: MainActivityViewModel) {
-    when (coinGeckoUiState) {
-        is UiState.Loading -> LoadingScreen()
-        is UiState.Success -> ListCryptoScreen(viewModel)
-        is UiState.Error -> ErrorScreen(viewModel)
     }
 }

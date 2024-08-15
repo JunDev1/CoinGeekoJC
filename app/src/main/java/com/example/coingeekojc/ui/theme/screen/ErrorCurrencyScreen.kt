@@ -14,6 +14,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -31,11 +32,17 @@ import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.coingeekojc.CurrencyInfoScreenViewModel
 import com.example.coingeekojc.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ErrorCurrencyScreen() {
+fun ErrorCurrencyScreen(
+    navController: NavController,
+    ) {
+    val viewModel : CurrencyInfoScreenViewModel = viewModel()
     Scaffold(
         topBar = {
             Surface(
@@ -44,11 +51,16 @@ fun ErrorCurrencyScreen() {
                 TopAppBar(
                     title = { Text(text = stringResource(R.string.name_currency)) },
                     navigationIcon = {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null,
-                            modifier = Modifier.padding(end = 32.dp)
-                        )
+                        IconButton(onClick = {
+                            navController.navigate("ListCryptoScreen")
+                        }) {
+                            Icon(
+                                Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(28.dp)
+                            )
+                        }
                     }
                 )
             }
@@ -78,7 +90,7 @@ fun ErrorCurrencyScreen() {
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = {
-                        //todo
+                        viewModel
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA500))
                 ) {

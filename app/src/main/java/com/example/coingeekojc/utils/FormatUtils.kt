@@ -26,3 +26,4 @@ fun PercentageChangeText(change: Double) {
         fontSize = 12.sp
     )
 }
+

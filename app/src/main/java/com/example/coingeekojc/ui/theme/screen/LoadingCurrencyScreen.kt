@@ -24,21 +24,14 @@ import com.example.coingeekojc.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun LoadingCurrencyScreenScreen() {
+fun LoadingCurrencyScreen() {
     Scaffold(
         topBar = {
             Surface(
                 shadowElevation = 4.dp
             ) {
                 TopAppBar(
-                    title = { Text(text = stringResource(R.string.name_currency)) },
-                    navigationIcon = {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null,
-                            modifier = Modifier.padding(end = 32.dp)
-                        )
-                    }
+                    title = { Text(text = stringResource(R.string.name_currency)) }
                 )
             }
         }

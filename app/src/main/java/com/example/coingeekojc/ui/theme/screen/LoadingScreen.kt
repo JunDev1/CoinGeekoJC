@@ -31,14 +31,7 @@ fun LoadingScreen() {
                 shadowElevation = 4.dp
             ) {
                 TopAppBar(
-                    title = { Text(text = stringResource(R.string.title_list_crypto)) },
-                    navigationIcon = {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null,
-                            modifier = Modifier.padding(end = 32.dp)
-                        )
-                    }
+                    title = { Text(text = stringResource(R.string.title_list_crypto)) }
                 )
             }
         }

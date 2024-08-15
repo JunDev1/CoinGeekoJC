@@ -31,12 +31,14 @@ import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.coingeekojc.MainActivityViewModel
 import com.example.coingeekojc.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ErrorScreen(viewModel: MainActivityViewModel) {
+fun ErrorScreen() {
+    val viewModel : MainActivityViewModel = viewModel()
     Scaffold(
         topBar = {
             Surface(
@@ -44,13 +46,6 @@ fun ErrorScreen(viewModel: MainActivityViewModel) {
             ) {
                 TopAppBar(
                     title = { Text(text = stringResource(R.string.title_list_crypto)) },
-                    navigationIcon = {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null,
-                            modifier = Modifier.padding(end = 32.dp)
-                        )
-                    }
                 )
             }
         }
